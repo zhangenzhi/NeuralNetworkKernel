@@ -132,6 +132,13 @@ RUN apt-get update -y && \
     libprotoc-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Compile gtest
+RUN cd /usr/src/googletest
+    mkdir build
+    cd build
+    cmake ..
+    make
+    cp lib/*.a /usr/lib
 
 # Build and install nvtop
 RUN apt-get update -y && \
