@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <stdlib.h>
 #include <gtest/gtest.h>
 #include <Eigen/Dense> 
@@ -22,6 +23,12 @@ TEST(EigenTest, EigenMultiply){
     EXPECT_EQ(m * n, expect_result);
 }
 
+void test_tanh(double x)
+{
+    double y = tanh(x);
+    cout << "y =" << endl << y << endl;
+}
+
 void test_eigen()
 {
     MatrixXd m = MatrixXd::Random(4,3);
@@ -40,9 +47,9 @@ void test_eigen()
 
 int main(int argc, char **argv)
 {
-    // cout << "Hello Geek\n";
+    test_tanh(1.0);
 
-    // test_eigen();
+    test_eigen();
 
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
