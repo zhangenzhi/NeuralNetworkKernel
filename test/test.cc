@@ -4,8 +4,11 @@
 #include <gtest/gtest.h>
 #include <Eigen/Dense> 
 
+#include "container/tensor.h"
+
 using namespace Eigen;
 using namespace std;
+using namespace nnk;
 
 
 // Demonstrate some basic assertions.
@@ -23,9 +26,10 @@ TEST(EigenTest, EigenMultiply){
     EXPECT_EQ(m * n, expect_result);
 }
 
-void test_tanh(double x)
+template <typename T>
+void test_tanh(T x)
 {
-    double y = tanh(x);
+    auto y = tanh(x);
     cout << "y =" << endl << y << endl;
 }
 
@@ -47,10 +51,20 @@ void test_eigen()
 
 int main(int argc, char **argv)
 {
-    test_tanh(1.0);
+    // test_tanh(1.0);
 
-    test_eigen();
+    // test_eigen();
 
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    // ::testing::InitGoogleTest(&argc, argv);
+
+    MatrixXd m = MatrixXd::Random(3,3);
+
+    cout<< "m =" << endl << m << endl;
+    MatrixXd v(m);
+    cout<< "v =" << endl << v << endl;
+
+    Tensor<double,3,3> t(m);
+
+    // return RUN_ALL_TESTS();
+    return 0;
 }

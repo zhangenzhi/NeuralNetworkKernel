@@ -1,0 +1,5 @@
+add_subdirectory(container)
+add_subdirectory(model)
+add_subdirectory(allocator)
+add_subdirectory(operator)
+add_subdirectory(algorithm)

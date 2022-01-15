@@ -1,9 +1,4 @@
-cmake_minimum_required(VERSION 3.14) 
-
-project(NNK VERSION 0.1)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+project(tests)
 
 # Setup gtest
 include(FetchContent)
@@ -19,9 +14,12 @@ enable_testing()
 find_package(Eigen3)
 include_directories(${EIGEN3_INCLUDE_DIRS})
 
+# link_libraries(nnk::container)
+
 add_executable(${PROJECT_NAME} test.cc)
 
 target_link_libraries(
     ${PROJECT_NAME}
     gtest_main
+    # nnk::container
 )
